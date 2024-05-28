@@ -133,6 +133,9 @@ abstract class Two_Factor_Provider {
 	 * @return string
 	 */
 	public static function get_code( $length = 8, $chars = '1234567890' ) {
+		// Allow others to filter the code length.
+		$length = apply_filters( 'two_factor_code_length', $length );
+
 		$code = '';
 		if ( is_array( $chars ) ) {
 			$chars = implode( '', $chars );
